@@ -13,7 +13,10 @@ A simple tool to help you keep your Playdate SDK up to date.
 1. Download the latest `playdate-sdk-updater` from the release tab on github
 2. (optional) Download the signing key 
     check the signature with `gpg --verify playdate-sdk-updater.sig playdater-sdk-updater`
-3. 
+3. Copy the file to your local binary folder
+    ```bash
+    cp ./target/release/playdate-sdk-updater ~/.local/bin/
+    ```
 
 ## Installation (build it yourself)
 
