@@ -22,7 +22,7 @@ const UPDATER_VERSION: &str = "1.0.0";
 #[tokio::main]
 async fn main() {
     println!("{} v.{}", "PLAYDATE SDK UPDATER".yellow().bold().underline(), format!("{}", UPDATER_VERSION).green());
-    println!("(Made by {}, {} with Panic Inc.)", "Oxey405".underline().blink(), "NOT affiliated".bold());
+    println!("(Made by {}, {} with Panic Inc.)", "Oxey405".underline(), "NOT affiliated".bold());
     if has_flag("--help") {
         print_help(UPDATER_VERSION);
         exit(0);
