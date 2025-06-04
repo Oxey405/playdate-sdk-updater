@@ -8,7 +8,14 @@ A simple tool to help you keep your Playdate SDK up to date.
 - Downloads and installs updates seamlessly.
 - Cross-platform support.
 
-## Installation
+## Installation (download from github)
+
+1. Download the latest `playdate-sdk-updater` from the release tab on github
+2. (optional) Download the signing key 
+    check the signature with `gpg --verify playdate-sdk-updater.sig playdater-sdk-updater`
+3. 
+
+## Installation (build it yourself)
 
 1. Clone the repository:
     ```bash
@@ -18,6 +25,16 @@ A simple tool to help you keep your Playdate SDK up to date.
     ```bash
     cd playdate-sdk-updater
     ```
+3. Build it yourself (with Rust)
+    ```bash
+    cargo build --release
+    ```
+4. Copy the file to your local binary folder
+    ```bash
+    cp ./target/release/playdate-sdk-updater ~/.local/bin/
+    ```
+
+Enjoy !
 
 ## Usage
 

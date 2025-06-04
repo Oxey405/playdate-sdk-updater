@@ -152,11 +152,11 @@ async fn download_sdk_from_url(url: &String) {
         .expect("Something went wrong when downloading the file.")
     {
         print_update_bar(chunks_count as f64, size as f64);
-        file.write_all(&chunk);
+        let _ = file.write_all(&chunk);
         chunks_count += chunk.len();
     }
 
-    file.flush();
+    let _ = file.flush();
     println!("{}", "File downloaded successfully.".green());
 }
 
