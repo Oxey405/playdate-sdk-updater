@@ -81,14 +81,14 @@ async fn main() {
     } else if update_info.get("ID").unwrap() != "" {
         println!(
             "Newer version is available ({} --> {}) ! Do you want to install it ? (Y/n)",
-            get_sdk_version().unwrap().magenta(),
+            get_sdk_version().unwrap_or("?.?.?".to_string()).magenta(),
             update_info.get("ID").unwrap().bright_green()
         );
         uncertain_update = false;
     } else {
         println!(
             "You are already up-to-date (version {})!",
-            get_sdk_version().unwrap_or("-.-.-".to_string()).green().bold()
+            get_sdk_version().unwrap_or("?.?.?".to_string()).green().bold()
         );
         return;
     }
@@ -111,7 +111,14 @@ fn get_sdk_path() -> Result<String, env::VarError> {
 }
 
 fn get_sdk_version() -> Result<String, std::io::Error> {
-    let sdk_path = get_sdk_path().unwrap();
+    let _sdk_path = get_sdk_path();
+
+    if _sdk_path.is_err() {
+        return Err(std::io::Error::new(std::io::ErrorKind::NotFound, "Could not find SDK version."));
+    }
+
+    let sdk_path = _sdk_path.unwrap();
+
     let version = fs::read_to_string(sdk_path + "/VERSION.txt");
     if version.is_err() {
         return Err(version.err().unwrap());
